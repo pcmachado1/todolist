@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<body onload="retrieveGroupsAndTasks()">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        
+            <div class="input-group">
+                <input class="form-control" type="text" id="txtGrupo"/>
+                <span class="input-group-addon btn btn-primary" id="btnNewGroup">Add Grupo</span>
+            </div>
+        <div  id="errorTask" style="display: none" class="row alert">
+                <small> <strong>Favor Preencher o campo para criar o grupo !!</strong></small>
+            </div>
+     
+        <div class="row"><p></p></div>
+        <div id="groups">
+            
+        </div>
+        <!--<div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control noresize" rows="5" id="contentTask"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="form-control" id="btnSubmitTask">Add Task</button>
+        </div>
+        !-->
+        <div class="form-group">
+            <table class="table" id="tasksTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tarefa</th>
+                        <th>Status</th>
+                        <th>Tarefa</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="col-md-2"></div>
+    
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atualizar Tarefa</h4>
+        </div>
+        <div class="modal-body">
+         <div class="form-group">
+                        <label>Tarefa</label>
+                        <input type="text"  id="idTask" style="display:none" name="idTask" class="form-control">
+                        <input type="text" id="txtTask" name="txtTask" class="form-control">
+                        <span id="errorTask"></span>
+                    </div>
+                    <button id="btnUpdateTask" class="btn btn-primary">Atualizar Tarefa</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
