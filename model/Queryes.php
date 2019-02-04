@@ -44,6 +44,8 @@ class Queryes {
     }
     public function updateCurrentStatus(Task $task) {
         $this->query = "UPDATE task SET status_task = '".$task->getStatusTask()."' WHERE id_task = ".$task->getIdTask().";";
+        
+        return $this->query;
     }
     
     public function retrieveTasksWithGroup(GroupTask $groupTask) {

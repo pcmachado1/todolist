@@ -8,19 +8,27 @@ $(document).ready(function(){
     
    $(document).on('click', '.btn', function(){
     	
-    			var idTask  = $(this)                       // $(this) representa o checkbox
+    			var idTask  = $(this)                       
                             .parent()              // Navega para o elemento pai (td)
                             .parent()              // Navega para o pai de td (tr)
                             .find(':nth-child(1)') // Encontra o elemento do seletor
                             .html();               // Retorna o html do elemento 
 
-                        var contentTask  = $(this)                       // $(this) representa o checkbox
+                        var contentTask  = $(this)                       
                             .parent()              // Navega para o elemento pai (td)
                             .parent()              // Navega para o pai de td (tr)
                             .find(':nth-child(2)') // Encontra o elemento do seletor
                             .html();               // Retorna o html do elemento 
-
-        		console.log(this);
+                          
+                          if(this.tagName === 'SELECT'){
+                              idTask = this.getAttribute('id');
+                              var statusTask = this.value;
+                              
+                              $.post('../todolist/controller/UpdateStatus.php',{idTask:idTask,statusTask:statusTask},function(data){
+                                  console.log(data);
+                              });
+                          }
+        		
         		 $("#idTask").val(idTask);
                          $("#txtTask").val(contentTask);
     		
@@ -108,7 +116,7 @@ function retrieveGroupsAndTasks() {
                                                             "<td id=\"\">"+jsonObject[i].id_task+"</td>"+
                                                             "<td id=\"\">"+jsonObject[i].content_task+"</td>"+
                                                             "<td id=\"\"><div class=\"dropdown\">"+
-                                                            "<select id=\""+jsonObject[i].id_task+"\" name=\"options\" class=\"btn btn-primary\">"+
+                                                            "<select id=\""+jsonObject[i].id_task+"\" name=\"options"+jsonObject[i].id_task+"\" class=\"btn btn-primary\">"+
                                                              "<option value=\"ativo\">Ativo</option>"+
                                                              "<option value=\"inativo\">Inativo</option>"+
                                                             "</select>"+
